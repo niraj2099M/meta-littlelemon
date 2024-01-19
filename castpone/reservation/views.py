@@ -1,19 +1,30 @@
+# from django.http import HttpResponse
 from django.shortcuts import render
-
-# Create your views here.
+from django.core import serializers
+from .models import Booking, Menu
+from datetime import datetime
+import json
+from django.views.decorators.csrf import csrf_exempt
+from django.http import HttpResponse
+from rest_framework.viewsets import ModelViewSet
+from .serializer import BookingSerializer
+from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
 from .serializer import MenuSerializer
-from rest_framework import generics
-from .models import menu_table
+from rest_framework.decorators import permission_classes
+from rest_framework.permissions import IsAuthenticated
 
-def index(request):
-    return render(request, 'index.html', {})
 
-class menuitemview(generics.ListCreateAPIView):
-    queryset = menu_table.objects.all()
+class BookingViewSet(ModelViewSet):
+    queryset = Booking.objects.all()
+    serializer_class = BookingSerializer
+    permission_classes = [IsAuthenticated]
+
+class MenuItemView(ListCreateAPIView):
+    queryset = Menu.objects.all()
+    serializer_class = MenuSerializer
+    permission_classes = [IsAuthenticated]
+
+class SingleMenuItemView(RetrieveUpdateDestroyAPIView):
+    queryset = Menu.objects.all()
     serializer_class = MenuSerializer
 
-
-
-class singleitemview(generics.RetrieveUpdateAPIView, generics.DestroyAPIView):
-    queryset = menu_table.objects.all()
-    serializer_class = MenuSerializer
