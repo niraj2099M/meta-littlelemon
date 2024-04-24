@@ -14,10 +14,19 @@ For the menu page, the owners would like to store the menu information in a data
 
 ![Home page](castpone/assets/289030531-ed14c250-a77c-4f11-bd07-c7aeb5898210.png)
 
-
-
-
 <hr>
+
+
+<br>
+
+
+
+## `Tech stack`
+
+- Django
+- sqlite
+- Javascript
+- Bootstrap
 
 ## `Installing`
 ```bash
@@ -25,17 +34,16 @@ For the menu page, the owners would like to store the menu information in a data
 gh repo clone niraj2099M/meta-littlelemon
 ```
 ### After that, you need to open the project in your IDE and run it.
-`cd castpone`
+        cd castpone
 
 
 
 - ## Command to perform migrations
-`python3 manage.py makemigrations`
-
-`python3 manage.py migrate`
+        python3 manage.py makemigrations
+        python3 manage.py migrate
 
 - ## Command to run server
-`python3 manage.py runserver`
+        python3 manage.py runserver
 
 
 
